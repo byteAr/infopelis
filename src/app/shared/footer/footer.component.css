@@ -1,0 +1,28 @@
+.footerContainer {
+    position: relative;
+    bottom: 0px;
+    padding: 2%;
+    height: 20%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 25%;
+    background-color: black;
+}
+
+.s1 {
+    grid-column: 1/2;
+    text-align: left;
+   
+}
+.s2 {
+    grid-column: 2/3;
+    text-align: center;
+}
+.s3 {
+    grid-column: 3/4;
+    text-align: right;
+}
+
+p{
+    color: white;
+}

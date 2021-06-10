@@ -1,0 +1,20 @@
+<div class="headerContainer">
+    <div class="headerRow">
+        <img class="logo" src="https://res.cloudinary.com/dgq2ycemj/image/upload/v1622327923/pelisFilmLogo_zaprk1.png" alt="">
+        <ul>
+            <li routerLink="/home">Inicio</li>
+            <li>Series</li>
+            <li>Peliculas</li>
+            <li>Novedades</li>
+            <li>Acerca de</li>
+        </ul>
+    </div>
+    <div class="userHeader" >
+            <form (ngSubmit)="buscar(miFormulario.value)" #miFormulario="ngForm">
+                <input autofocus class="inputSearch" ngModel name="film" placeholder="Peliculas, series" type="text">
+                <button type="submit" href=""><span class="icon icon-search"></span></button> 
+            </form>        
+            <a href=""><span class="icon icon-bell"></span></a>     
+            <a href=""><span class="icon icon-user"></span></a>        
+    </div>
+</div>

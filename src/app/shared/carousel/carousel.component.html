@@ -1,0 +1,19 @@
+<article>    
+  <swiper class="containerSwiper" effect="fade" 
+      [slidesPerView]="3"
+      [spaceBetween]="100"
+      [autoplay] = true
+  >
+    <div *ngFor="let film of films">
+        <ng-template swiperSlide>
+            <div class="containerImageSlider">
+                <img src="https://image.tmdb.org/t/p/original{{film.backdrop_path}}" alt="">              
+                <h1>{{film.title | titlecase |slice:0:28}}</h1>
+                <h1>{{film.original_name |titlecase}}</h1>
+            </div>           
+        </ng-template> 
+        
+    </div>      
+  </swiper>  
+    
+</article>

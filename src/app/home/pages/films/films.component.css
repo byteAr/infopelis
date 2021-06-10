@@ -1,0 +1,67 @@
+.filmsContainer {
+    padding: 1%;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(auto, 400px);
+    display: grid;
+    max-width: 100%;   
+    width: 100vw;
+    min-height: 80vh;
+    gap: 1%; 
+}
+
+
+.filmsContainer {
+    position: relative;
+    height: 100%;
+    top: -300px;
+}
+
+.tittle {
+    text-align: center;
+    font-weight: 700;
+}
+
+.containerImg {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+::ng-deep .ant-card-body {
+    padding: 5% !important;
+}
+
+
+::ng-deep nz-card {   
+    
+    border-radius: 3% !important;
+    background: linear-gradient(45deg, rgba(0,0,0,1) 50%, transparent 100%) !important;
+    backdrop-filter: blur(2px) !important;
+    z-index: 5 !important;
+    -webkit-box-shadow: -4px 2px 20px 7px rgba(0,0,0,0.75);
+    -moz-box-shadow: -4px 2px 20px 7px rgba(0,0,0,0.75);
+    box-shadow: -4px 2px 20px 7px rgba(0,0,0,0.75);
+    border:2px solid rgba(255, 255, 255, 0.4) !important;
+    height: 400px !;
+    
+}
+
+
+
+img{
+    height: 300px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 4%; 
+    -webkit-box-shadow: -4px 2px 36px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: -4px 2px 36px 3px rgba(0,0,0,0.75);
+    box-shadow: -4px 2px 36px 3px rgba(0,0,0,0.75);
+    cursor: pointer !important;
+
+}
+
+@media (max-width: 940px) { 
+    .filmsContainer {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

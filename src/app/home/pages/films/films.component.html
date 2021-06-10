@@ -1,0 +1,27 @@
+
+<div class="containerSections">
+    <section *ngIf="films.length > 0" class="filmsContainer">
+        <nz-card *ngFor="let film of films | slice:0:18" style="z-index: -1;height:100%; background-color: black; color: white" >
+            <p class="tittle">{{film.title | slice:0:27}}</p>
+            <div *ngIf="film.poster_path != null" class="containerImg">
+                <img src="https://image.tmdb.org/t/p/w500{{film.poster_path}}" alt="">
+            </div>
+            <div *ngIf="film.poster_path == null" class="containerImg">
+                <img src="https://res.cloudinary.com/dgq2ycemj/image/upload/v1623003402/noImage_x9corp.jpg" alt="">
+            </div>
+            <p>{{film.release_date | slice:0:4 }}</p>
+        </nz-card>
+    </section>
+    <section *ngIf="films.length === 0" class="filmsContainer">        
+        <nz-card *ngFor="let film of popular | slice:0:18" style="z-index: -1;height:100%; background-color: black; color: white" >
+            <p class="tittle">{{film.title | slice:0:25}}</p>
+            <div *ngIf="film.poster_path != null" class="containerImg">
+                <img src="https://image.tmdb.org/t/p/w500{{film.poster_path}}" alt="">
+            </div>
+            <div *ngIf="film.poster_path == null" class="containerImg">
+                <img src="https://res.cloudinary.com/dgq2ycemj/image/upload/v1623003402/noImage_x9corp.jpg" alt="">
+            </div>
+            <p>{{film.release_date | slice:0:4}}</p>
+        </nz-card>        
+    </section>
+</div>

@@ -1,0 +1,46 @@
+article {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+
+.containerImageSlider{
+    width: 100%;
+    height: 100%;
+}
+
+.containerSwiper {
+    background-color: black;
+}
+
+img {
+    width: 100%;
+}
+
+
+
+h1 { 
+    height: 0;
+    font-family: 'Cinzel Decorative', cursive;
+    position: relative;
+    top: -400px;
+    color: transparent;
+    padding-left: 2%;
+    font-size: 3.5rem;
+    text-shadow: rgb(0, 0, 0) 1px 0 20px;
+    -webkit-text-stroke: 2px rgb(255, 255, 255);
+}
+
+@media (max-width: 940px) {
+    article {
+        height: 150px;
+        border: 1px solid white;
+    }
+
+    img {
+        height: 150px;
+        object-fit:fill;
+    }
+}
