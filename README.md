@@ -1,4 +1,4 @@
-# PelisApp
+# InfoPelis
 
 Information search website about movies, series, documentaries, etc.
 
