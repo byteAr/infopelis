@@ -15,7 +15,8 @@ const enum endopoint {
   upcoming = '/movie/upcoming',
   trending = '/trending/all/week',
   originals = '/discover/tv',
-  search_film = '/search/movie'
+  search_film = '/search/movie',
+  getFilm = '/movie/'
 }
 
 @Injectable({
@@ -80,7 +81,6 @@ export class FilmsServicesService {
     })
     .pipe(
       map(res => {
-        console.log(res)
         return res.results
       })
     )     
@@ -119,9 +119,13 @@ export class FilmsServicesService {
       })
     )
     .subscribe(film => {
-      console.log(film);
+      
       this._films = film
     })    
+  }
+
+  getFilm(id) {
+    return this.http.get<any>(`${this.URL}${endopoint.getFilm}${id}?api_key=${this.api_key}`)  
   }
 
 

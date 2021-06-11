@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { FilmsServicesService } from '../../../services/films-services.service';
 
 @Component({
   selector: 'app-film',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilmComponent implements OnInit {
 
-  constructor() { }
+  idFilm: string;
+  film: any;
+
+  constructor( private activateRoute: ActivatedRoute,
+                private filmsServices : FilmsServicesService) { }
 
   ngOnInit(): void {
+    this.getFilm()
+  }
+
+  getFilm() {
+    this.idFilm = this.activateRoute.snapshot.paramMap.get("id");
+    this.film = this.filmsServices.getFilm(this.idFilm)
+    .subscribe(resp => {
+      this.film = resp
+    })
+    
+    
   }
 
 }

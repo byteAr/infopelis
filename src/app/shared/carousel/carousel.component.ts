@@ -31,7 +31,6 @@ export class CarouselComponent implements OnInit{
   ngOnInit() {
     this.filmsService.getTrending()
       .subscribe( resp => {
-        console.log(resp);
         this.films = resp
       })
   }

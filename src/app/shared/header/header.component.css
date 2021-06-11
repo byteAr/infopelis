@@ -8,6 +8,7 @@
     background-color: transparent;
     padding: 1%;
     position:fixed;
+    z-index: 3;
 }
 
 .headerRow {
@@ -54,6 +55,11 @@ button {
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+
+a {
+    color: white !important;
+    cursor: pointer !important;
 }
 
 .inputSearch:focus {
