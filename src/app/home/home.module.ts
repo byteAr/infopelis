@@ -11,7 +11,10 @@ import { SharedModule } from './../shared/shared.module';
 import { MainComponent } from './pages/main/main.component'
 
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzCardModule } from 'ng-zorro-antd/card';
+
+import {CardModule} from 'primeng/card';
+
+
 
 
 
@@ -27,8 +30,8 @@ import { NzCardModule } from 'ng-zorro-antd/card';
     HomeRoutingModule,
     SharedModule,
     NzIconModule,
-    NzCardModule,
-    RouterModule
+    RouterModule,
+    CardModule
   ]
   
 })

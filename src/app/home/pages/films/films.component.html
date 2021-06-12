@@ -1,32 +1,33 @@
 <app-carousel></app-carousel>
-<div class="containerSections">
+
+<!-- <div class="containerSections">
     <section *ngIf="films.length > 0" class="filmsContainer">
-        <nz-card class="cardFilms" *ngFor="let film of films" style="z-index: -1;height:100%; background-color: black; color: white" >
+        <p-card class="cardFilms" *ngFor="let film of films" style="z-index: -1;height:100%; background-color: black; color: white" >
             <a [routerLink]="['/film/', film.id]">
-                <p class="tittle">{{film.title | slice:0:27}}</p>
+                <ng-template pTemplate="header" class="tittle">{{film.title | slice:0:27}}</ng-template>
                 <div *ngIf="film.poster_path != null" class="containerImg">
                     <img src="https://image.tmdb.org/t/p/w500{{film.poster_path}}" alt="">
                 </div>
                 <div *ngIf="film.poster_path == null" class="containerImg">
                     <img src="https://res.cloudinary.com/dgq2ycemj/image/upload/v1623003402/noImage_x9corp.jpg" alt="">
                 </div>
-                <p>{{film.release_date | slice:0:4 }}</p>
+                <ng-template pTemplate="footer">{{film.release_date | slice:0:4 }}</ng-template>
             </a>
-        </nz-card>
+        </p-card>
     </section>    
     <div *ngIf="films.length === 0" class="filmsContainer">                
-        <nz-card class="cardFilms" *ngFor="let film of popular" style="z-index: -1;height:100%; background-color: black; color: white" >                
+        <p-card class="cardFilms" *ngFor="let film of popular" style="z-index: -1;height:100%; background-color: black; color: white" >                
             <a [routerLink]="['/film/', film.id]">
-                <p class="tittle">{{film.title | slice:0:25}}</p>
+                <ng-template pTemplate="header" class="tittle">{{film.title | slice:0:27}}</ng-template>
                 <div *ngIf="film.poster_path != null" class="containerImg">
                     <img src="https://image.tmdb.org/t/p/w500{{film.poster_path}}" alt="">
                 </div>
                 <div *ngIf="film.poster_path == null" class="containerImg">                        
                     <img src="https://res.cloudinary.com/dgq2ycemj/image/upload/v1623003402/noImage_x9corp.jpg" alt="">                        
                 </div>
-                <p>{{film.release_date | slice:0:4 }}</p>            
+                <ng-template pTemplate="footer">{{film.release_date | slice:0:4 }}</ng-template>            
             </a>
-        </nz-card>  
+        </p-card>  
         
     </div>
-</div>
+</div> -->
