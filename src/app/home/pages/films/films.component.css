@@ -10,10 +10,12 @@
 }
 
 
+
 .filmsContainer {
     position: relative;
     height: 100%;
     top: -300px;
+    z-index: 1;
 }
 
 .tittle {
@@ -27,13 +29,9 @@
     height: 100%;
 }
 
-::ng-deep .ant-card-body {
-    padding: 5% !important;
-}
 
 
-.cardFilms {  
-    
+::ng-deep .p-card-body{
     border-radius: 20px !important;
     background: linear-gradient(45deg, rgba(0,0,0,1) 50%, transparent 100%) !important;
     backdrop-filter: blur(2px) !important;
@@ -43,7 +41,14 @@
     box-shadow: -4px 2px 20px 7px rgba(0,0,0,0.75);
     border:2px solid rgba(255, 255, 255, 0.4) !important;
     height: 400px !;
-    
+}
+
+::ng-deep .p-component {
+    background-color: transparent !important;
+    padding: 0 !important;
+}
+::ng-deep .p-card-content {
+    padding: 0 !important;
 }
 
 a {
@@ -61,10 +66,17 @@ img{
     cursor: pointer !important;
 
 }
+p-progressSpinner {
+    text-align: center;
+}
+
+
 
 
 @media (max-width: 940px) { 
     .filmsContainer {
         grid-template-columns: repeat(3, 1fr);
     }
+
+
 }
