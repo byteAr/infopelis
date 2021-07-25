@@ -1,4 +1,4 @@
-import {  Component, OnInit } from "@angular/core";
+import {  Component, Input, OnInit } from "@angular/core";
 import { FilmsServicesService } from '../../services/films-services.service';
 import { Movies } from '../../home/interfaces/movies.interface';
 import SwiperCore, {
@@ -23,15 +23,12 @@ SwiperCore.use([EffectFade, Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 })
 export class CarouselComponent implements OnInit{
 
-  films: Movies;
+ @Input() films: any[] = []
 
   constructor( private filmsService : FilmsServicesService) {}
   
 
   ngOnInit() {
-    this.filmsService.getTrending()
-      .subscribe( resp => {
-        this.films = resp
-      })
+    
   }
 }

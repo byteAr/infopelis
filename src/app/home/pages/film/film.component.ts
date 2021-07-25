@@ -10,7 +10,9 @@ import { FilmsServicesService } from '../../../services/films-services.service';
 export class FilmComponent implements OnInit {
 
   idFilm: string;
+  type: string;
   film: any;
+
 
   constructor( private activateRoute: ActivatedRoute,
                 private filmsServices : FilmsServicesService) { }
@@ -21,7 +23,8 @@ export class FilmComponent implements OnInit {
 
   getFilm() {
     this.idFilm = this.activateRoute.snapshot.paramMap.get("id");
-    this.film = this.filmsServices.getFilm(this.idFilm)
+    this.type = this.activateRoute.snapshot.paramMap.get("type");
+    this.film = this.filmsServices.getFilm(this.type, this.idFilm)
     .subscribe(resp => {
       this.film = resp
     })

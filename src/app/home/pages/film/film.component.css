@@ -42,6 +42,13 @@ span {
     height: 500px !;
 }
 
+::ng-deep .p-component {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+
+
 .descriptionContainer {
     width: 70%;
     color: white;

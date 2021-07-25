@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import {map} from 'rxjs/operators'
+import {map, tap} from 'rxjs/operators'
 import { Observable } from 'rxjs'
 import { Movies } from '../home/interfaces/movies.interface';
 
@@ -15,8 +15,9 @@ const enum endopoint {
   upcoming = '/movie/upcoming',
   trending = '/trending/all/week',
   originals = '/discover/tv',
-  search_film = '/search/movie',
-  getFilm = '/movie/'
+  search = '/search/multi',
+  getFilm = '/movie/',
+  popular_series = '/tv/popular'
 }
 
 @Injectable({
@@ -30,24 +31,26 @@ export class FilmsServicesService {
 
   private _films: any = [];
 
-  get films(): Movies[] {
+  get films() {
     return [...this._films]
   }
 
   constructor( private http: HttpClient) { }
 
-  getLatestMovie(): Observable<Movies> {
+  getLatestMovie() {
     return this.http.get<any>(`${this.URL}${endopoint.latest}`, {
       params: {
         api_key : this.api_key
       }
     })
     .pipe(
-      map(res => {
-        console.log(res);
+      map(res => {        
         return res.results
       })
     ) 
+    .subscribe(film => {
+      this._films = film
+    })
   }
   getNowPlaying(): Observable<Movies> {
     return this.http.get<any>(`${this.URL}${endopoint.now_playing}`, {
@@ -73,7 +76,21 @@ export class FilmsServicesService {
       })
     ) 
   }
-  getPopular(): Observable<Movies> {
+
+  popularSeries() {
+    return this.http.get<any>(`${this.URL}${endopoint.popular_series}?api_key=${this.api_key}`, /* {
+      params: {
+        api_key : this.api_key
+      }
+    } */)
+    .pipe(
+      map(res => {
+        return res.results
+      })
+    ) 
+      }
+
+  getPopular() {
     return this.http.get<any>(`${this.URL}${endopoint.popular}`, {
       params: {
         api_key : this.api_key
@@ -85,7 +102,7 @@ export class FilmsServicesService {
       })
     )     
   }
-  getTopRated(): Observable<Movies> {
+  getTopRated() {
     return this.http.get<any>(`${this.URL}${endopoint.top_rated}`, {
       params: {
         api_key : this.api_key
@@ -97,22 +114,36 @@ export class FilmsServicesService {
       })
     ) 
   }
-  getTrending(): Observable<Movies> {
-    return this.http.get<any>(`${this.URL}${endopoint.trending}`, {
+  getTrending() {
+      return this.http.get<any>(`${this.URL}${endopoint.trending}`, {
       params: {
         api_key : this.api_key
       }
     })
-    .pipe(
+    .pipe(      
       map(res => {
         return res.results
+      })            
+    )
+    
+  }
+  
+  refreshFilms() {
+    this.http.get<any>(`${this.URL}${endopoint.latest}?api_key=${this.api_key}`)
+    .pipe(
+      map(res => {
+        return res.results               
       })
-    ) 
-  } 
+    )
+    .subscribe(film => {
+      
+      this._films = film
+    })  
+  }
   
   getFilms(film:string) {
     console.log(film);    
-    this.http.get<any>(`${this.URL}${endopoint.search_film}?api_key=${this.api_key}&query=${film}`)
+    this.http.get<any>(`${this.URL}${endopoint.search}?api_key=${this.api_key}&query=${film}`)
     .pipe(
       map(res => {
         return res.results               
@@ -123,11 +154,33 @@ export class FilmsServicesService {
       this._films = film
     })    
   }
-
-  getFilm(id) {
-    return this.http.get<any>(`${this.URL}${endopoint.getFilm}${id}?api_key=${this.api_key}`)  
+  getSearch(film:string) {
+    return this.http.get<any>(`${this.URL}${endopoint.search}?api_key=${this.api_key}&query=${film}`)
+    .pipe(
+      map(res => {
+        return res.results               
+      })
+    )    
   }
 
+  
+
+  getFilm(type:string, id: string) {
+    return this.http.get<any>(`${this.URL}/${type}/${id}?api_key=${this.api_key}`)  
+  }
+
+  getUpComing() {
+    return this.http.get<any>(`${this.URL}${endopoint.upcoming}`, {
+      params: {
+        api_key : this.api_key
+      }
+    })
+    .pipe(      
+      map(res => {
+        return res.results
+      })            
+    )     
+  }
 
 
 

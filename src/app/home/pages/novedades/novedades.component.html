@@ -1,11 +1,12 @@
-<app-carousel [films]="films"></app-carousel>
+<app-carousel [films]="filmsNovedades"></app-carousel>
 <div class="containerSections">
-    <section *ngIf="films" class="filmsContainer">        
-            <p-card  *ngFor="let film of films ">
-                <a [routerLink]="['/detail/', film.media_type, film.id]">
+    <section *ngIf="filmsNovedades" class="filmsContainer">        
+            <p-card  *ngFor="let film of filmsNovedades ">
+                <a [routerLink]="['/detail/movie/', film.id]">
                     <div class="tittle">{{film.title | slice:0:21}}</div>
                     <div class="tittle">{{film.original_name | slice:0:21}}</div>
-                    <br>                    
+                    <br>
+                    <p-progressSpinner *ngIf="film.poster_path == null"></p-progressSpinner>
                     <div *ngIf="film.poster_path != null" class="containerImg">
                         <img src="https://image.tmdb.org/t/p/w500{{film.poster_path}}" alt="">
                     </div>

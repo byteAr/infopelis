@@ -14,6 +14,10 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import {CardModule} from 'primeng/card';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { NovedadesComponent } from './pages/novedades/novedades.component';
+import { SeriesComponent } from './pages/series/series.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SearchComponent } from './pages/search/search.component';
 
 
 
@@ -24,7 +28,11 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
   declarations: [
     FilmsComponent,
     FilmComponent,
-    MainComponent
+    MainComponent,
+    NovedadesComponent,
+    SeriesComponent,
+    HomeComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,

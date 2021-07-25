@@ -1,6 +1,18 @@
-<div >
+<div>
     <div class="headerContainer">
-        <app-header></app-header>
+        <app-header (onDebounce)="sugerencia( $event)"></app-header>
+        <div class="listSugerencias">
+            <ul *ngIf="showSugerencias">
+                <li *ngFor="let film of filmsSugeridos">                      
+                        <a *ngIf="film.poster_path !== null" (click)="ocultarSugerencias()" [routerLink]="['/detail/', film.media_type, film.id]">
+                            <img src="https://image.tmdb.org/t/p/w500{{film.poster_path}}" alt=""><p>{{film.title | slice:0:21}}{{film.original_name | slice:0:21}}</p>
+                        </a>
+                        <a (click)="ocultarSugerencias()" [routerLink]="['/detail/', film.media_type, film.id]">
+                            <img src="https://res.cloudinary.com/dgq2ycemj/image/upload/v1623003402/noImage_x9corp.jpg" alt="">
+                        </a>
+                    </li>                
+            </ul>
+        </div>
     </div>    
     <div class="containerFilms2">
         <router-outlet></router-outlet>
@@ -9,4 +21,3 @@
         <app-footer></app-footer>
     </div>
 </div>
-
